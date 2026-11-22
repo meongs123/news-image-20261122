@@ -1,0 +1,101 @@
+# news-image-20261122 — BUILD NOTE (Sun 22 Nov 2026 ~08:25–09:00 WIB)
+
+## Verification (final)
+
+- `entry.png`: 1024×1024 RGB PNG, **179,810 bytes** (≤1 MiB),
+  sha256 `296678601ff6c3a1424fad8a7655f7b9272e67feb9411aca0530a0461b90e33e`
+- Determinism: `compose.py` run 2× → identical sha256 (also re-verified
+  after the art fixes: two consecutive runs identical).
+- `main.ts` local run (MAKEFUN_OUTPUT_DIR=/tmp/ni22_main, Node 24):
+  exit 0, output sha256 identical to entry.png, guards pass.
+- Counts: **38 stories (13 leads + 25 briefs), 7 regions, 9 fields.**
+  Regions: Europe 9, Asia 8, Americas 7, Middle East 7, World 3,
+  Oceania 2, Africa 2. Fields: War 8, Politics 11, Sport 6, Economy 3,
+  Disasters 3, Society 3, Justice 2, Climate 1, Tech 1. Recount from
+  `stories.py` matches the printed region bar exactly.
+- Story numbers: leads 1–13, briefs 14–38, consecutive, no gaps.
+- Loud-failure guards fired during the build and caught real defects:
+  lead 4 deck overflow (fixed by geometry, not by truncating), brief 14
+  and brief 36 too long for one line (briefs rewritten short).
+- Map pins: all 13 snapped to land dots; pairwise disc distance ≥19px
+  after the leader-line offset pass (audit script, /tmp — no pair <19px).
+- Art bleed audit: every one of the 13 illustrations rendered standalone
+  at its real size and checked to paint only inside its box (1px
+  tolerance) — **NONE** leaking. This caught 6 real bleeds (ship flames
+  drawing over lead 1's deck, city/barrage buildings above their boxes,
+  rugby pitch lines crossing the headline, race car above its box,
+  tennis ball and quake trace outside their boxes) — all fixed in
+  `compose.py`.
+- Visual: full page viewed; enlarged crops of the big cards, small cards
+  and bottom band viewed. No clipped or overlapping text remains. DATE
+  CHECK box holds all 6 exclusions inside its border; MAP KEY complete;
+  footer 3 lines inside the page.
+
+## Verify-or-drop pass (all 12 resolved, 0 dropped)
+
+All 12 flagged items verified against a named wire/primary source on
+22 Nov ~01:25 UTC:
+
+| # | Item | Verdict |
+|---|---|---|
+| 16 | Eisenkot invites Likud to coalition talks | VERIFIED — AFP, 21 Nov; talks from Sun |
+| 25 | US airlines warned on al-Qaeda threat | VERIFIED — CNN/FBI-DHS-TSA bulletin Thu 19 Nov, reported 20 Nov; deck says "Thu" + "no specific credible threat" |
+| 28 | Basra power-plant fire | VERIFIED — Reuters, 21 Nov, 4 killed; injured split 30 vs 35, NOT banked |
+| 29 | France 45-17 Argentina | VERIFIED — Reuters, 21 Nov; reach final vs South Africa 29 Nov |
+| 30 | Lebanon 83rd independence | VERIFIED — Xinhua/AFP, 21 Nov; Aoun speech Sat, eve of anniversary |
+| 32 | Saudi downs 3 Houthi missiles | VERIFIED — Reuters, 21 Nov; three ballistic missiles, early Sat |
+| 33 | Japan live-fire training in India | VERIFIED — PIB joint statement, 19 Nov; deck says "pact signed Thu" |
+| 34 | Air India Jeddah suspension to 24 Nov | VERIFIED — ANI, announced Fri 20 Nov |
+| 35 | Prince William ranger cover | VERIFIED — ANI, 20 Nov (announced 19 Nov); deck says "announced Thu" |
+| 36 | Real Madrid 2-1 Celta, Mbappe penalty miss | VERIFIED — Reuters, 21 Nov; Espi 85th-min winner |
+| 37 | Aswan Forum closes | VERIFIED — AU/UNDP; 6th edition 21–22 Nov, closes Sun |
+| 38 | Trump: Iran deal "could last 20 years" | VERIFIED — Fox News Sat 21 Nov via JNS/ANI |
+
+Also re-confirmed at build time: COP31 package unveiled overnight,
+objections due 03:00 GMT, approval session 06:00 GMT (Reuters, 22 Nov)
+— **no deal approved yet**; Gupta sentenced 235 months = 19 yrs 7 mos
+on Fri 20 Nov (Reuters/WSJ); Bitcoin back above $60,000 Sat after a
+$55,130 low (Reuters $60,192).
+
+## Deck-subject audit (word-for-word, all 38)
+
+- 1 COP31: package/deal — subject "package", verb "lands" ✓
+- 2 Bahrain: Iran strikes US bases; IRGC claim attributed, Bahrain claim
+  attributed ✓
+- 3 Oman: two tankers struck; third hit Fri ✓
+- 4 Barrage: Fri-night, no "Sunday" in deck ✓
+- 5 Sparta II: ship hit by suspected drones, fire burns ✓
+- 6 Peru: quake 6.7, Fri local, no casualties ✓
+- 7 Kryvyi Rih: strike kills boy + medic; double-tap ✓
+- 8 El Chapo Isidro: Mexico seizes boss; captured Fri night ✓
+- 9 Gaza: four killed in strikes amid ceasefire ✓
+- 10 Nepal: PM flies to Delhi; arrives Sun ✓
+- 11 England: 37-12 record rout ✓
+- 12 Las Vegas GP: tonight, Verstappen on pole; Antonelli penalty ✓
+  (result pending — decked as preview)
+- 13 ATP final: today, Alcaraz v Zverev; semis Sat ✓ (result pending)
+- 14–38 briefs: each headline's subject matches its story; dates in
+  decks where the event is Fri/Sat/Thu (15 Sat, 18 Thu ruling, 19 Sat,
+  20 Fri landfall, 22 Fri, 25 Thu bulletin, 27 Thu order, 28 Sat,
+  33 Thu pact, 35 Thu announcement). No inverted actors.
+
+## Late re-check list (mandatory before final submit)
+
+1. COP31 outcome — approved at 06:00 GMT, blocked, or delayed? Freeze
+   the lead deck on the outcome. (Session 13:00 WIB Sunday.)
+2. Las Vegas GP winner (race ~04:00 GMT Sunday) and ATP final winner
+   (Sunday afternoon Turin) — fill in results, or keep preview wording.
+3. India Test score — 629/6 at lunch Day 4 will move; freeze at build
+   time (done: 629/6, lead 261).
+4. Sunday daytime news sweep (Monday) — any big Sunday-daytime story
+   should displace the weakest brief. Do NOT fold in a Monday event.
+
+## Authorship note
+
+`compose.py` written fresh in-session in 4 substantive turns (helpers →
+illustrations → map → layout/assembler) plus targeted fix edits; no file
+copied or cloned from the 19th/20th builds. `main.ts` written in 2
+messages (copy program, then the guard revision). `stories.py` written
+in-session; the briefs block was re-laid out via a shell heredoc rewrite
+during the one-line fit fix, then edited again via the edit tool
+(brief 36). `entry.png` is generated by `compose.py`, not copied in.
