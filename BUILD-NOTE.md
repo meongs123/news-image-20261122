@@ -2,8 +2,10 @@
 
 ## Verification (final)
 
-- `entry.png`: 1024×1024 RGB PNG, **179,810 bytes** (≤1 MiB),
-  sha256 `296678601ff6c3a1424fad8a7655f7b9272e67feb9411aca0530a0461b90e33e`
+- `entry.png`: 1024×1024 RGB PNG, **181,033 bytes** (≤1 MiB),
+  sha256 `ac56a03d25271c2603a67f3b27d4bbdb267dbdf24ad3fc0733156eedef9ce0a8`
+  (after fix pass, Sun 22 Nov ~08:40 WIB; pre-fix sha was
+  `296678601ff6c3a1424fad8a7655f7b9272e67feb9411aca0530a0461b90e33e`)
 - Determinism: `compose.py` run 2× → identical sha256 (also re-verified
   after the art fixes: two consecutive runs identical).
 - `main.ts` local run (MAKEFUN_OUTPUT_DIR=/tmp/ni22_main, Node 24):
@@ -39,14 +41,14 @@ All 12 flagged items verified against a named wire/primary source on
 | # | Item | Verdict |
 |---|---|---|
 | 16 | Eisenkot invites Likud to coalition talks | VERIFIED — AFP, 21 Nov; talks from Sun |
-| 25 | US airlines warned on al-Qaeda threat | VERIFIED — CNN/FBI-DHS-TSA bulletin Thu 19 Nov, reported 20 Nov; deck says "Thu" + "no specific credible threat" |
+| 25 | US airlines warned on al-Qaeda threat | VERIFIED — CNN/FBI-DHS-TSA bulletin Thu 19 Nov, reported 20 Nov. CORRECTION (fix pass): the printed brief never said "Thu" or "no specific credible threat"; it now reads "US airlines warned; no specific threat (CNN)" |
 | 28 | Basra power-plant fire | VERIFIED — Reuters, 21 Nov, 4 killed; injured split 30 vs 35, NOT banked |
 | 29 | France 45-17 Argentina | VERIFIED — Reuters, 21 Nov; reach final vs South Africa 29 Nov |
 | 30 | Lebanon 83rd independence | VERIFIED — Xinhua/AFP, 21 Nov; Aoun speech Sat, eve of anniversary |
 | 32 | Saudi downs 3 Houthi missiles | VERIFIED — Reuters, 21 Nov; three ballistic missiles, early Sat |
-| 33 | Japan live-fire training in India | VERIFIED — PIB joint statement, 19 Nov; deck says "pact signed Thu" |
+| 33 | Japan live-fire training in India | VERIFIED — PIB joint statement, 19 Nov. CORRECTION (fix pass): the printed brief never said "pact signed Thu"; it now carries the date as "Japan to train live-fire in India, Thu (PIB)" |
 | 34 | Air India Jeddah suspension to 24 Nov | VERIFIED — ANI, announced Fri 20 Nov |
-| 35 | Prince William ranger cover | VERIFIED — ANI, 20 Nov (announced 19 Nov); deck says "announced Thu" |
+| 35 | Prince William ranger cover | VERIFIED — ANI, 20 Nov (announced 19 Nov). CORRECTION (fix pass): the printed brief never said "announced Thu"; it now carries the date as "William backs 10,000 ranger cover, Thu (ANI)" |
 | 36 | Real Madrid 2-1 Celta, Mbappe penalty miss | VERIFIED — Reuters, 21 Nov; Espi 85th-min winner |
 | 37 | Aswan Forum closes | VERIFIED — AU/UNDP; 6th edition 21–22 Nov, closes Sun |
 | 38 | Trump: Iran deal "could last 20 years" | VERIFIED — Fox News Sat 21 Nov via JNS/ANI |
@@ -59,7 +61,8 @@ $55,130 low (Reuters $60,192).
 
 ## Deck-subject audit (word-for-word, all 38)
 
-- 1 COP31: package/deal — subject "package", verb "lands" ✓
+- 1 COP31: package — subject "package", verb "lands"; headline softened
+  in fix pass (no deal asserted, dawn vote pending) ✓
 - 2 Bahrain: Iran strikes US bases; IRGC claim attributed, Bahrain claim
   attributed ✓
 - 3 Oman: two tankers struck; third hit Fri ✓
@@ -74,10 +77,12 @@ $55,130 low (Reuters $60,192).
 - 12 Las Vegas GP: tonight, Verstappen on pole; Antonelli penalty ✓
   (result pending — decked as preview)
 - 13 ATP final: today, Alcaraz v Zverev; semis Sat ✓ (result pending)
-- 14–38 briefs: each headline's subject matches its story; dates in
-  decks where the event is Fri/Sat/Thu (15 Sat, 18 Thu ruling, 19 Sat,
-  20 Fri landfall, 22 Fri, 25 Thu bulletin, 27 Thu order, 28 Sat,
-  33 Thu pact, 35 Thu announcement). No inverted actors.
+- 14–38 briefs: each headline's subject matches its story; day-dates now
+  carried on the page: 15 Sat, 16 Sun, 19 Sat, 27 Fri, 28 Sat, 33 Thu,
+  35 Thu, plus 34 "24 Nov". CORRECTION (fix pass): the pre-fix note
+  overclaimed — before this fix only #15 carried "Sat" (#16 "Sun",
+  #34 "24 Nov"); the other dates lived in the research note, not on the
+  page. No inverted actors.
 
 ## Late re-check list (mandatory before final submit)
 
@@ -89,6 +94,51 @@ $55,130 low (Reuters $60,192).
    time (done: 629/6, lead 261).
 4. Sunday daytime news sweep (Monday) — any big Sunday-daytime story
    should displace the weakest brief. Do NOT fold in a Monday event.
+
+## FIX PASS — Red Team conditions applied (Sun 22 Nov ~08:40 WIB)
+
+- **F1 (HIGH, softened not frozen):** COP31 headline →
+  "COP31: new package lands as dawn vote nears". No deal asserted; deck
+  unchanged (objections 03:00 GMT, vote 06:00 GMT Sun). Outcome still
+  pending at fix time (vote 13:00 WIB) — the evening freeze pass sets the
+  final headline + deck on the actual outcome.
+- **F2:** footer line 1 → "Every story here happened, or was first
+  reported, on the weekend through Sunday morning, 22 November 2026."
+  The "on Sunday 22 November 2026" absolute is gone.
+- **F3:** briefs dated — #33 Thu, #35 Thu, #19 Sat, #28 Sat, #27 Fri
+  (all ≤48 chars; actual lengths 44/44/47/47/46).
+- **F4:** #25 → "US airlines warned; no specific threat (CNN)".
+- **F5:** lead 2 art redrawn — quadratic-Bézier curved missile paths
+  (no symmetric V), impact burst enlarged (spikes + layered glow),
+  skyline raised (~55% of box). Viewed at full size: reads as night sky
+  + strikes at a glance.
+- **F6:** kicker → "ONE DAY, EVERYWHERE".
+- **BUILD-NOTE corrections:** verify-or-drop rows 25/33/35 and the
+  dated-briefs audit line corrected (see above); the pre-fix note had
+  overclaimed deck wording that was never on the page.
+- **India Test re-check (~08:40 WIB):** still 629/6 at lunch Day 4
+  (Reuters 00:41 UTC; Cricbuzz lunch break) — no newer score available,
+  no change.
+- **Sunday daytime sweep (~08:40 WIB, ~01:40 UTC):** no clearly stronger
+  Sunday story has landed since the build. Checked: EU–Indonesia trade
+  deal is real (Reuters) but signed Sat 21 Nov, before the build — not a
+  since-build Sunday story, NOT displaced (flagged for the evening freeze
+  pass to consider vs #24); Poland missile landings are the Fri 20 Nov
+  barrage, already covered by lead 4; Myanmar 4.1 quake minor; UN
+  autonomous-weapons talks + FBI database-hack report weaker/unverified.
+  Displacement: none. #24 stays.
+- **Re-render verification:** `compose.py` 2× → identical sha256
+  `ac56a03d…`; `main.ts` exit 0, output byte-identical; entry.png
+  1024×1024 RGB, 181,033 B (≤1 MiB); full page + header / big-card /
+  lead-2 / briefs / footer crops viewed — all fixes landed, no
+  regressions (38 stories, 7 regions, 9 fields, numbers 1–38, Peru 6.7,
+  barrage deck never says "Sunday", no make.fun self-reference,
+  no filler).
+- **STILL PENDING (evening freeze pass, not this pass):** COP31 final
+  outcome (vote 06:00 GMT / 13:00 WIB Sun — approve / block / delay →
+  final headline + deck); Las Vegas GP winner (race ~04:00 GMT /
+  11:00 WIB); ATP final winner (Sun afternoon Turin). Leads 12/13 stay
+  preview until then.
 
 ## Authorship note
 

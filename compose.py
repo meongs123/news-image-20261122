@@ -118,18 +118,46 @@ def art_cop(d, x, y, w, h):
 
 
 def art_bahrain(d, x, y, w, h):
+    import math
     d.rectangle([x, y, x + w, y + h], fill=(30, 34, 58))
+    for sx, sy in [(x + 14, y + 8), (x + w - 16, y + 6),
+                   (x + w // 2 + 30, y + 12), (x + w // 3, y + 5)]:
+        d.ellipse([sx - 1, sy - 1, sx + 1, sy + 1], fill=(255, 255, 255))
+    # Raised skyline silhouette: taller buildings fill the lower ~55%.
     for bx in range(x + 6, x + w - 6, 26):
-        bh = 18 + ((bx * 7) % 26)
+        bh = min(30 + ((bx * 7) % 30), h - 6)
         d.rectangle([bx, y + h - bh, bx + 18, y + h], fill=(70, 80, 120))
-    d.polygon([(x + w - 46, y + h), (x + w - 30, y + h - 44),
+    d.polygon([(x + w - 46, y + h), (x + w - 30, y + h - 62),
                (x + w - 14, y + h)], fill=(120, 130, 170))
-    d.line([x + 10, y + 14, x + w // 2, y + h - 30], fill=(255, 190, 60), width=3)
-    d.line([x + w - 12, y + 8, x + w // 2 + 20, y + h - 34], fill=(255, 120, 60), width=3)
-    for px, py in [(x + 12, y + 16), (x + w - 10, y + 10), (x + w // 2, y + 26)]:
+    ix, iy = x + w // 2, y + h - 30  # impact point, above the skyline base
+
+    def bez(p0, p1, p2, n=24):
+        pts = []
+        for i in range(n + 1):
+            t = i / n
+            px = (1 - t) ** 2 * p0[0] + 2 * (1 - t) * t * p1[0] + t ** 2 * p2[0]
+            py = (1 - t) ** 2 * p0[1] + 2 * (1 - t) * t * p1[1] + t ** 2 * p2[1]
+            pts.append((px, py))
+        return pts
+
+    # Curved missile paths arcing down to the impact point (not straight
+    # chart lines): left arc sweeps in from the upper left, right arc from
+    # the upper right.
+    d.line(bez((x + 10, y + 12), (x + w // 4, y + h // 2), (ix, iy)),
+           fill=(255, 190, 60), width=3)
+    d.line(bez((x + w - 12, y + 8), (x + 3 * w // 4, y + h // 2 - 6),
+               (ix + 18, iy - 4)), fill=(255, 120, 60), width=3)
+    for px, py in [(x + 10, y + 12), (x + w - 12, y + 8)]:
         d.ellipse([px - 4, py - 4, px + 4, py + 4], fill=(255, 210, 90))
-    d.ellipse([x + w // 2 - 5, y + h - 36, x + w // 2 + 5, y + h - 26],
-              fill=(255, 80, 40))
+    # Enlarged impact burst: radiating spikes + layered glow.
+    for k in range(8):
+        a = math.pi * 2 * k / 8
+        d.line([ix + int(10 * math.cos(a)), iy + int(10 * math.sin(a)),
+                ix + int(20 * math.cos(a)), iy + int(20 * math.sin(a))],
+               fill=(255, 160, 60), width=2)
+    d.ellipse([ix - 16, iy - 12, ix + 16, iy + 12], fill=(255, 140, 40))
+    d.ellipse([ix - 9, iy - 7, ix + 9, iy + 7], fill=(255, 200, 80))
+    d.ellipse([ix - 4, iy - 3, ix + 4, iy + 3], fill=(255, 240, 180))
 
 
 def art_tanker(d, x, y, w, h):
@@ -415,7 +443,7 @@ CONTENT_W = W - 2 * MARGIN
 
 def paint_header(d):
     d.rectangle([0, 0, W, 26], fill=NAVY)
-    d.text((MARGIN, 5), "THE WORLD IN ONE DAY", font=SANS_B(13), fill=(255, 255, 255))
+    d.text((MARGIN, 5), "ONE DAY, EVERYWHERE", font=SANS_B(13), fill=(255, 255, 255))
     right = "SUNDAY EDITION  •  No. 326"
     d.text((W - MARGIN - d.textlength(right, font=SANS_B(11)), 7), right,
            font=SANS_B(11), fill=(200, 200, 200))
@@ -554,8 +582,8 @@ def paint_date_check(d, x, y, w, h):
 def paint_footer(d, y):
     d.line([MARGIN, y, W - MARGIN, y], fill=LINE, width=1)
     d.text((MARGIN, y + 4),
-           "Every story here happened, or was first reported, on Sunday 22 November 2026 — "
-           "the weekend's news through Sunday morning.",
+           "Every story here happened, or was first reported, on the weekend "
+           "through Sunday morning, 22 November 2026.",
            font=SANS(10), fill=INK)
     d.text((MARGIN, y + 17), SOURCES_LINE, font=SANS(9), fill=(70, 70, 70))
     d.text((MARGIN, y + 29),
