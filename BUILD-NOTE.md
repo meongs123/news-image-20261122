@@ -236,3 +236,21 @@ All four outcomes frozen on verified live sources; no invented results.
   exit 0, output byte-identical to entry.png. No render guard fired.
 - **Visual check:** full page viewed at full size; brief 38 reads
   clean, no clipped or overflowing text.
+
+## FOOTER SOURCE-LIST FIX — follow-up to freeze (Sun 22 Nov ~20:15 WIB)
+
+- **SOURCES_LINE corrected to match the sources actually cited on the
+  page.** Added BBC, AU, Jagran, USGS; dropped stale BCCI, JNS, TOI.
+  The 19 cited sources now exactly equal the 19 listed (verified
+  programmatically from LEADS + BRIEFS). Measured width of the new
+  line at DejaVuSans 9px: **575.3px**, drawn at x=12 — ends at ~587px,
+  well inside the 1024px page (no width guard exists in the renderer,
+  so the measurement was done before rendering). No story, lead,
+  brief, number, or compose.py touched.
+- **Re-render verification:** `compose.py` 2× → byte-identical, sha256
+  `2cbbf39ea924022ef28334f89e4b0c1f252c9a07a9e456a61421a1023fab3765`;
+  `entry.png` 1024×1024 RGB, **182,491 bytes** (≤1 MiB). `main.ts`
+  local run (MAKEFUN_OUTPUT_DIR=/tmp/ni22_main_freeze3, Node 24):
+  exit 0, output byte-identical to entry.png. Counts re-confirmed
+  38/7/9, story numbers 1–38 consecutive. Footer viewed at full size:
+  the source line reads complete on one line, no clipping.

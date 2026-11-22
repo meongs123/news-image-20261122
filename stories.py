@@ -115,5 +115,5 @@ DATE_CHECK = [
 ]
 
 SOURCES_LINE = ("Sources: Reuters, AP, Al Jazeera, AFP, ANI, IANS, ESA, "
-                "SCMP, BCCI, CNN, QNC, Xinhua, ABC, PIB, JNS, TOI, PTI, "
-                "Cricbuzz.")
+                "SCMP, CNN, QNC, Xinhua, ABC, PIB, PTI, Cricbuzz, BBC, "
+                "AU, Jagran, USGS.")
