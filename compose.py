@@ -451,7 +451,7 @@ def paint_header(d):
     f = SERIF_B(58)
     d.text(((W - d.textlength(mast, font=f)) / 2, 30), mast, font=f, fill=INK)
     d.line([MARGIN, 94, W - MARGIN, 94], fill=INK, width=2)
-    sub = ("COP31 package near approval  •  Tankers struck off Oman  •  "
+    sub = ("COP31 talks collapse, no deal  •  Tankers struck off Oman  •  "
            "Nepal's PM in Delhi")
     f2 = SERIF_I(15)
     d.text(((W - d.textlength(sub, font=f2)) / 2, 100), sub, font=f2, fill=(60, 60, 60))
@@ -464,11 +464,11 @@ def paint_header(d):
 def paint_numbers(d):
     cells = [
         ("~200", "nations at COP31"),
-        ("03:00 GMT", "objection deadline"),
+        ("No deal", "COP31 collapses"),
         ("400+ / 110", "drones / missiles"),
         ("6.7", "Peru quake"),
         ("37-12", "England v NZ"),
-        ("629/6", "India in Wellington"),
+        ("720/9", "India in Wellington"),
     ]
     y0, y1 = 148, 196
     cw = CONTENT_W / 6.0

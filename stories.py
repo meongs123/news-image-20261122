@@ -2,8 +2,13 @@
 # 38 stories, 7 regions, 9 fields. Every item verified 22 Nov 2026 ~01:25 UTC
 # against a named wire/primary source (see SOURCES below). Items whose event
 # fell on Fri 19 / Sat 21 Nov carry that date INSIDE their deck; the barrage
-# deck never says "Sunday". COP31 / Las Vegas GP / ATP final were still
-# undecided at build time and are decked honestly as pending/preview.
+# deck never says "Sunday".
+# FREEZE PASS Sun 22 Nov ~20:00 WIB: COP31 BLOCKED (no deal adopted, Kurum
+# declares no consensus at closing plenary, first deal-less COP since 2009);
+# Las Vegas GP won by Verstappen; India Test Day 4 stumps 720/9 dec, NZ
+# 119/2 trail 233; brief 24 displaced by the Banten factory fire (Reuters
+# wire snapshot 3 killed / 36 missing). ATP final (Alcaraz v Zverev) STILL
+# PENDING — starts 18:00 CET / 00:00 WIB Mon; lead 13 stays a preview.
 # Peru quake uses the USGS-REVISED 6.7, never 6.9. Basra fire decks only
 # "4 killed" — the injured toll is split 30 vs 35 across wires, so it is
 # not banked. Japan live-fire and Prince William cover are Thu 19/20 Nov
@@ -12,8 +17,8 @@
 LEADS = [
     # (num, region, field, tag, headline, deck, source, art)
     (1, "World", "Climate", "CLIMATE",
-     "COP31: new package lands as dawn vote nears",
-     "Objections due 03:00 GMT; approval vote 06:00 GMT Sun. ~200 nations.",
+     "COP31 collapses: no deal as EU rejects pact",
+     "Kurum declares no consensus; 10-page pact not adopted. First deal-less COP since 2009.",
      "Reuters", "cop"),
     (2, "Middle East", "War", "GULF",
      "Iran strikes US bases in Bahrain",
@@ -56,8 +61,8 @@ LEADS = [
      "Sat at Twickenham: five tries; biggest-ever margin over NZ.",
      "Reuters", "rugby"),
     (12, "Americas", "Sport", "F1",
-     "Las Vegas GP tonight; Verstappen on pole",
-     "Antonelli, champion, drops to 6th on grid penalty.",
+     "Verstappen wins Las Vegas GP",
+     "Beats Norris by 0.6s; Piastri 3rd. Third Vegas win in four years.",
      "AP", "race"),
     (13, "Europe", "Sport", "TENNIS",
      "ATP final today: Alcaraz v Zverev",
@@ -80,9 +85,9 @@ BRIEFS = [
     (21, "World", "Economy", "Bitcoin back above $60,000 (Reuters)"),
     (22, "Americas", "Justice", "Gupta jailed 19 yrs 7 mos, Pannun plot (Reuters)"),
     (23, "Asia", "Politics", "Cricketer Chahal joins BJP's OBC Morcha (ANI)"),
-    (24, "Americas", "Politics", "Melania Trump urges more ceasefires (TOI)"),
+    (24, "Asia", "Disasters", "Factory fire kills 3, 36 missing (Reuters)"),
     (25, "Americas", "War", "US airlines warned; no specific threat (CNN)"),
-    (26, "Oceania", "Sport", "India 629/6, record Test total in NZ (BCCI)"),
+    (26, "Oceania", "Sport", "India 720/9 dec; NZ 119/2, trail 233 (Cricbuzz)"),
     (27, "Africa", "Politics", "Mogadishu rallies back UAE expulsion Fri (QNC)"),
     (28, "Middle East", "Disasters", "Fire at Basra power plant kills 4 Sat (Reuters)"),
     (29, "Europe", "Sport", "France 45-17 Argentina, reach final (Reuters)"),
@@ -110,4 +115,5 @@ DATE_CHECK = [
 ]
 
 SOURCES_LINE = ("Sources: Reuters, AP, Al Jazeera, AFP, ANI, IANS, ESA, "
-                "SCMP, BCCI, CNN, QNC, Xinhua, ABC, PIB, JNS, TOI, PTI.")
+                "SCMP, BCCI, CNN, QNC, Xinhua, ABC, PIB, JNS, TOI, PTI, "
+                "Cricbuzz.")
