@@ -99,7 +99,7 @@ BRIEFS = [
     (35, "Europe", "Society", "William backs 10,000 ranger cover, Thu (ANI)"),
     (36, "Europe", "Sport", "Real Madrid 2-1 Celta; Mbappe miss (Reuters)"),
     (37, "Africa", "Politics", "Aswan Forum on Africa's agency closes (AU)"),
-    (38, "Americas", "Politics", "Trump: Iran deal 'could last 20 years' (JNS)"),
+    (38, "Asia", "Politics", "Korea minister quits over exam chaos (BBC)"),
 ]
 
 REGION_ORDER = ["Europe", "Asia", "Americas", "Middle East", "World",

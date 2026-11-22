@@ -212,3 +212,27 @@ All four outcomes frozen on verified live sources; no invented results.
   starts 00:00 WIB Mon 23 Nov — after the freeze; cannot be filled
   tonight). Deadline Tue 24 Nov 07:00 WIB. NOT bundled, kit-checked,
   or submitted — main agent handles that after the user's green light.
+
+## FREEZE PASS FOLLOW-UP — #38 displaced (Sun 22 Nov ~20:10 WIB)
+
+- **Brief 38 — DISPLACED.** South Korea Education Minister Choi
+  Kyo-jin offered to resign Sunday 22 Nov over last-minute CSAT
+  anti-cheating rule changes; President Lee Jae Myung accepted within
+  about an hour. Brief now reads "Korea minister quits over exam
+  chaos (BBC)" (Asia / Politics). Sources: BBC (22 Nov 09:20 UTC /
+  16:20 WIB) + Korea JoongAng Daily / Aju Press / KBS cross-check.
+  Old #38 (Trump Iran-deal quote, JNS) removed.
+- **Counts after displacement: 38 stories (13 leads + 25 briefs), 7
+  regions, 9 fields.** Regions: Europe 9, Asia 10, Americas 5,
+  Middle East 7, World 3, Oceania 2, Africa 2. Fields: War 8,
+  Politics 10, Sport 6, Economy 3, Disasters 4, Society 3, Justice 2,
+  Climate 1, Tech 1. Story numbers 1–38 consecutive (renderer asserts
+  38/7/9 — passed). Nothing else changed: leads 1/12/13, briefs 24/26,
+  numbers strip and sub-headline all stay as frozen in ef1ee89.
+- **Re-render verification:** `compose.py` 2× → byte-identical, sha256
+  `0d7b4445ef07bbc6fbf04a0cf89f8613ae8f4bcfe3b611e010c4f8544c3df526`;
+  `entry.png` 1024×1024 RGB, **182,304 bytes** (≤1 MiB). `main.ts`
+  local run (MAKEFUN_OUTPUT_DIR=/tmp/ni22_main_freeze2, Node 24):
+  exit 0, output byte-identical to entry.png. No render guard fired.
+- **Visual check:** full page viewed at full size; brief 38 reads
+  clean, no clipped or overflowing text.
